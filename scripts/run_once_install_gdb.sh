@@ -22,7 +22,7 @@ if [[ ! -d ~/.gdb/peda ]]; then
     git clone https://github.com/longld/peda.git ~/.gdb/peda
 fi
 
-if [[ ! -f ~/.gdb/gef.py]]; then
+if [[ ! -f ~/.gdb/gef.py ]]; then
     wget -q -O ~/.gdb/gef.py https://raw.githubusercontent.com/hugsy/gef/refs/heads/main/gef.py
 fi
 
