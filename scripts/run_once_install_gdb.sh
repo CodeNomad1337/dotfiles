@@ -18,7 +18,7 @@ cd ~/.gdb/pwndbg
 
 git clone https://github.com/longld/peda.git ~/.gdb/peda
 
-wget -q -O ~/.gdb/gef.py https://github.com/hugsy/gef/raw/master/gef.py
+wget -q -O ~/.gdb/gef.py https://raw.githubusercontent.com/hugsy/gef/refs/heads/main/gef.py
 
 echo -e '#!/bin/bash\nexec gdb -q -ex init-peda "$@"' | sudo tee /usr/bin/gdb-peda
 sudo chmod +x /usr/bin/gdb-peda
