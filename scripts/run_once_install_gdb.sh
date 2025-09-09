@@ -12,20 +12,32 @@ fi
 
 mkdir -p ~/.gdb
 
-git clone https://github.com/pwndbg/pwndbg ~/.gdb/pwndbg
-cd ~/.gdb/pwndbg
-./setup.sh
+if [[ ! -d ~/.gdb/pwndbg ]]; then
+    git clone https://github.com/pwndbg/pwndbg ~/.gdb/pwndbg
+    cd ~/.gdb/pwndbg
+    ./setup.sh
+fi
 
-git clone https://github.com/longld/peda.git ~/.gdb/peda
+if [[ ! -d ~/.gdb/peda ]]; then
+    git clone https://github.com/longld/peda.git ~/.gdb/peda
+fi
 
-wget -q -O ~/.gdb/gef.py https://raw.githubusercontent.com/hugsy/gef/refs/heads/main/gef.py
+if [[ ! -f ~/.gdb/gef.py]]; then
+    wget -q -O ~/.gdb/gef.py https://raw.githubusercontent.com/hugsy/gef/refs/heads/main/gef.py
+fi
 
-echo -e '#!/bin/bash\nexec gdb -q -ex init-peda "$@"' | sudo tee /usr/bin/gdb-peda
-sudo chmod +x /usr/bin/gdb-peda
+if [[ ! -f /usr/bin/gdb-peda ]]; then
+    echo -e '#!/bin/bash\nexec gdb -q -ex init-peda "$@"' | sudo tee /usr/bin/gdb-peda
+    sudo chmod +x /usr/bin/gdb-peda
+fi
 
-echo -e '#!/bin/bash\nexec gdb -q -ex init-pwndbg "$@"' | sudo tee /usr/bin/gdb-pwndbg
-sudo chmod +x /usr/bin/gdb-pwndbg
+if [[ ! -f /usr/bin/gdb-pwndbg ]]; then
+    echo -e '#!/bin/bash\nexec gdb -q -ex init-pwndbg "$@"' | sudo tee /usr/bin/gdb-pwndbg
+    sudo chmod +x /usr/bin/gdb-pwndbg
+fi
 
-echo -e '#!/bin/bash\nexec gdb -q -ex init-gef "$@"' | sudo tee /usr/bin/gdb-gef
-sudo chmod +x /usr/bin/gdb-gef
+if [[ ! -f /usr/bin/gdb-gef ]]; then
+    echo -e '#!/bin/bash\nexec gdb -q -ex init-gef "$@"' | sudo tee /usr/bin/gdb-gef
+    sudo chmod +x /usr/bin/gdb-gef
+fi
 
