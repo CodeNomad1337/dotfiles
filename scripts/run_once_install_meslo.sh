@@ -2,7 +2,7 @@
 
 if command -v apt &>/dev/null; then
     sudo apt install --yes fontconfig
-elif command -v pacman &>/dev/null
+elif command -v pacman &>/dev/null; then
     sudo pacman -S --noconfirm fontconfig
 fi
 
