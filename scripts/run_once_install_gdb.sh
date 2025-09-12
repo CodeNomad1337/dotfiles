@@ -6,7 +6,7 @@ if ! command -v gdb &>/dev/null; then
   if command -v apt &>/dev/null; then
     sudo apt-get install --yes gdb
   elif command -v pacman &>/dev/null; then
-    sudo pacman -Syu --noconfirm gdb
+    sudo pacman -S --noconfirm gdb
   fi
 fi
 
